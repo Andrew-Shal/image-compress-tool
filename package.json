@@ -1,0 +1,23 @@
+{
+  "name": "image-compress-tool",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@mdi/font": "^3.6.95",
+    "electron-builder": "^22.8.1",
+    "roboto-fontface": "*",
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.5",
+    "vuetify": "^2.2.11",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "~4.5.0",
+    "vue-cli-plugin-vuetify": "~2.0.7",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
