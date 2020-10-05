@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+          background-color: #ECECEC;
+          font-family: BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+          text-align: center;
+          overflow: hidden;
+          font-size: 16px;
+          -webkit-user-select: none;
+          margin:0;
+          padding:0;
+        }
+        img {
+          width: 65px;
+          height: 65px;
+        }
+        h1 {
+          font-size: 0.9em;
+          -webkit-user-select: text;
+        }
+        p {
+          font-size: 0.8em;
+          -webkit-user-select: text;
+        }
+        ul li{
+            font-weight: 600;
+            padding-bottom:8px;
+        }
+        ul li span{
+            font-weight: normal;
+            display:block;
+        }
+      </style>
+</head>
+<body style="padding:20px;">
+    <img src="../static/img-compress-small.png">
+    <h1><script>document.write(require('../package.json').name)</script></h1>
+    <ul style="list-style:none;text-align:left;font-size:12px;padding:5px;">
+        <li>Version <span><script>document.write(require('../package.json').version)</script></span></li>
+        <li>Description <span><script>document.write(require('../package.json').description)</script></span></li>
+        <li>Developed By <span><script>document.write(require('../package.json').author.name)</script></span></li>
+        <li>Email <span><script>document.write(require('../package.json').author.email)</script></span></li>
+        <li>Website <span><script>document.write(require('../package.json').author.url)</script></span></li>
+        <li>license <span><script>document.write(require('../package.json').license)</script></span></li>
+        
+    </ul>
+</body>
+</html>
