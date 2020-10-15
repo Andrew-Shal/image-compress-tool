@@ -85,7 +85,6 @@ function createWindow() {
     main.window.on("closed", () => {
       main.window = null
     })
-
   }
 
     // Exit cleanly on request from parent process in development mode.
@@ -140,6 +139,15 @@ function createWindow() {
     function dispatch(...args){
         send('dispatch',...args)
     }
+
+    // iss12
+    function getPosition(){
+      return main.window.getPosition()
+    }
+
+    function getSize(){
+      return main.window.getSize()
+    }
   
     function send(...args){
         if(!main.window) return
@@ -155,6 +163,8 @@ function createWindow() {
       show,
       toggleAlwaysOnTop,
       toggleDevTools,
+      getPosition,
+      getSize,
       window
     }
 

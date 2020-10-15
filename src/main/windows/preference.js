@@ -1,4 +1,5 @@
-const config = require('../../config')
+// TODO : add esc key listener on press to close child window if close diaglog btn or cancel btn is not visible(parent window os off the the side and the child window opens offscreen)
+
 const {BrowserWindow, ipcMain} = require('electron')
 const {main} = require('./main')
 const path = require('path')
@@ -8,7 +9,7 @@ const helper = require('../helper')
 function init() {
     if(preference.window) {
         console.log('preference window aready created')
-        return preference.window.show()
+        return show()
     }
     console.log('creating preference window')
     createWindow()
@@ -39,6 +40,9 @@ function createWindow(){
         },
     })
 
+    // center window
+    centerWindow()
+
     preference.window.loadURL(helper.getViewURL('/preference','Preference'))
     
     preference.window.once('ready-to-show',function(){
@@ -52,8 +56,22 @@ function createWindow(){
     })
 }
 
+function show(){
+    console.log("show func triggered")
+    centerWindow()
+    preference.window.show()
+}
+
+function centerWindow(){
+    // get position of main window and reposition preference window 
+    let centerOffset = helper.getCenterOffset(main.getPosition(),main.getSize(), preference.window.getSize())
+    console.log("centerOffset: ", centerOffset)
+    preference.window.setPosition(centerOffset.x,centerOffset.y)
+}
+
 const preference = {
     init,
+    show,
     window:null,
 }
 export {preference}
