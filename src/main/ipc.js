@@ -115,7 +115,7 @@ function init(){
   ipcMain.on("close-preference-window",(e,arg) => {
     // TODO : rework this
     console.log("preference window is closing")
-    if(preference.window.isVisible) preference.window.hide()
+    if(preference.window.isVisible) preference.hide()
   })
 
   ipcMain.on("updated-preference",(e,arg) => {

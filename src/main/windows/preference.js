@@ -4,6 +4,8 @@ const {BrowserWindow, ipcMain} = require('electron')
 const {main} = require('./main')
 const path = require('path')
 
+const electronLocalShortcut = require('electron-localshortcut')
+
 const helper = require('../helper')
 
 function init() {
@@ -44,6 +46,17 @@ function createWindow(){
     centerWindow()
 
     preference.window.loadURL(helper.getViewURL('/preference','Preference'))
+
+    // register esc shortcut
+    // TODO: move to separate file and merge with main window shortcuts
+    electronLocalShortcut.register(preference.window,"Esc",()=>{
+        // hide preference window
+        // TODO: implement using the event "close-preference-window" in ipc events file
+        if(preference.window.isVisible){
+            hide()
+            console.log("window will be hidden")
+        }
+    })
     
     preference.window.once('ready-to-show',function(){
         preference.window.webContents.openDevTools({mode:"detach"})
@@ -62,16 +75,21 @@ function show(){
     preference.window.show()
 }
 
+function hide(){
+    preference.window.hide()
+}
+
 function centerWindow(){
     // get position of main window and reposition preference window 
     let centerOffset = helper.getCenterOffset(main.getPosition(),main.getSize(), preference.window.getSize())
-    console.log("centerOffset: ", centerOffset)
+    console.log("centerOffset: ", centerOffset.x, centerOffset.y)
     preference.window.setPosition(centerOffset.x,centerOffset.y)
 }
 
 const preference = {
     init,
     show,
+    hide,
     window:null,
 }
 export {preference}
