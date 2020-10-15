@@ -4,7 +4,7 @@ import CxltToastr from "cxlt-vue2-toastr"
 var toastrConfigs = {
   position: "top right",
   showDuration: 500,
-  timeOut: 3000,
+  timeOut: 2000,
   showMethod: "slideInRight",
   hideMethod: "slideInRight",
 }

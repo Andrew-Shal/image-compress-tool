@@ -5,3 +5,5 @@ const ipc = require('./main/ipc')
 windows.main.init()
 menu.init()
 ipc.init()
+
+// TODO : rename all event names

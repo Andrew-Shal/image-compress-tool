@@ -36,8 +36,17 @@
       },
     },
     created() {
-      window.ipcRenderer.on("main-to-bus-add-images",(e,arg) => {
+      window.ipcRenderer.on("main-to-bus-add-images", (e, arg) => {
         bus.$emit("bus-add-images")
+      })
+      
+      window.ipcRenderer.on("preferences-updated", (e, arg) => {
+        // show toaster notification
+        // #feat12
+        this.$toast.success({
+          message: "Preferences Saved!",
+          title: "success"
+        })
       })
 
       bus.$on("bus-compress-images", () => {
@@ -95,11 +104,11 @@
 </script>
 
 <style>
+  .home {
+    flex-wrap: wrap;
+  }
 
-.home{
-  flex-wrap:wrap;
-}
-.home .flex-item{
-  width:100%;  
-}
+  .home .flex-item {
+    width: 100%;
+  }
 </style>

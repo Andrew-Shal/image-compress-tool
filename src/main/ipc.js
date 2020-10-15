@@ -9,7 +9,7 @@ const { realpathSync } = require("fs")
 const { basename, dirname, join } = require("path")
 const {logger} = require('./logger')
 
-const {preference} = require("./windows")
+const {preference,main} = require("./windows")
 
 function init(){
   ipcMain.on("open-image-select-dialog", e => {
@@ -116,5 +116,10 @@ function init(){
     // TODO : rework this
     console.log("preference window is closing")
     if(preference.window.isVisible) preference.window.hide()
+  })
+
+  ipcMain.on("updated-preference",(e,arg) => {
+    console.log("sending update to main ui")
+    main.window.send("preferences-updated","test")
   })
 }
