@@ -99,12 +99,12 @@ function getKbSize(size) {
 function convertPrecentageToFloat(val) {
   return parseFloat((val / 100).toFixed(2))
 }
-
+// #iss14
 function getCenterOffset(parentPos, parentSize, childSize) {
   console.log("pP: ", parentPos,"pS:",parentSize,"cS: ", childSize)
   return {
-    x: (parentPos[0] + (parentSize[0] / 2) - (childSize[0] / 2)),
-    y: (parentPos[1] + (parentSize[1] / 2) - (childSize[1] / 2))
+    x: parseInt(parentPos[0] + (parentSize[0] / 2) - (childSize[0] / 2))),
+    y: parseInt(parentPos[1] + (parentSize[1] / 2) - (childSize[1] / 2)))
   }
 }
 
